@@ -19,10 +19,10 @@ class PackageList:
     
     def insert_package(self, package):
         index = self.my_hash(package.package_id)
-        self.table[index].append(package)
+        self.table[index].append((package.package_id, package))
 
     def find_package(self, package_id):
         index = self.my_hash(package_id)
-        for package in self.table[index]:
-            if package.package_id == package_id:
+        for key, package in self.table[index]:
+            if key == package_id:
                 return package
