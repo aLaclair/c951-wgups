@@ -2,7 +2,7 @@ import csv, re
 from package import Package
 
 def import_packages(packages_list):
-    # read csv and add packages to hash table
+    # read csv and add packages to hash table: O(n)
     with open('./package_file.csv', mode='r') as file:
         packages_csv = csv.reader(file)
         for row in packages_csv:
@@ -18,6 +18,7 @@ def import_packages(packages_list):
             
             packages_list.insert_package(package)
 
+# read address csv and make a list: O(n)
 def import_addresses():
     address_list = []
     # read address csv and make a list of addresses
@@ -28,11 +29,18 @@ def import_addresses():
 
     return address_list
 
+# read distance matrix and create a 2D array to hold the information: O(n^2)
 def import_distances():
     distance_matrix = []
     with open('./distances.csv', mode='r', encoding='utf-8-sig') as file:
         distance_csv = csv.reader(file)
         for row in distance_csv:
-            distance_matrix.append([float(re.search(r'\d+', row[0]).group()) for distance in row])
+            temp = []
+            for column in row:
+                num = float(re.search(r"(-?\d*\.?\d+)", column).group(0) if re.search(r"(-?\d*\.?\d+)", column) else 0.0)
+                temp.append(num)
+            distance_matrix.append(temp)
 
     return distance_matrix
+
+
