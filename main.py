@@ -1,3 +1,4 @@
+# Austin LaClair, 001680934
 from datetime import time
 
 from package import PackageList
@@ -36,6 +37,7 @@ truck_3.load_packages(packages_list, truck_3_package_ids)
 for i in range(len(truck_3_package_ids)):
     truck_3.deliver_next_package(address_list, distances)
 
+print(f"Total Distance: {truck_1.distance + truck_2.distance + truck_3.distance} miles")
 
 # start of UI
 print("""Hello! Welcome to WGUPS. What would you like to do?\n
