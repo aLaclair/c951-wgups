@@ -10,8 +10,8 @@ packages_list = PackageList()
 # init trucks with their start times and package ids
 truck_1 = Truck(1, time(8,0,0))
 truck_2 = Truck(2, time(9,5,0))
-truck_1_package_ids = [1,13,14,15,16,19,20,26,30,31,34,37,40,2,4,35]
-truck_2_package_ids = [3,6,9,18,25,28,29,32,33,36]
+truck_1_package_ids = [1,9,13,14,15,16,19,20,26,30,31,34,37,40,2,4,35]
+truck_2_package_ids = [3,6,18,25,28,29,32,33,36]
 truck_3_package_ids = [5,7,8,10,11,12,17,21,22,23,24,27,38,39]
 
 # import package, address, and distance data
