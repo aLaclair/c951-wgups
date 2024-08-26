@@ -27,10 +27,18 @@ class Truck:
         # loop until we find the best package possible
         for package in self.packages:
             package_address_index = address_list.index(package.address)
-            #print(package_address_index, self.current_location_index)
+            #if it is package 9 and it is not 10:20 yet, skip it
+            if package.package_id == 9 and self.time < time(10,20,0):
+                continue
             if distance_list[self.current_location_index][package_address_index] < distance_to_next_stop:
                 distance_to_next_stop = distance_list[self.current_location_index][package_address_index]
                 best_package = package
+
+        # in package 9 is the only one left, make it 10:20 and send it!
+        if not best_package and self.packages[0].package_id == 9:
+            self.time = time(10,20,0)
+            best_package = self.packages[0]
+            distance_to_next_stop = distance_list[self.current_location_index][address_list.index(best_package)]
             
         # deliver the package and set metadata for the truck
         self.distance = self.distance + distance_to_next_stop

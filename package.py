@@ -45,9 +45,12 @@ class PackageList:
         package = self.find_package(package_id)
         # if package is delivered before end_time but after start_time, show delivery
         if start_time < package.delivery_time < end_time:
-            print(f"Package ID: {package.package_id} | Address: {package.address} | City: {package.city} | Zipcode:{package.zipcode} | Deadline: {package.deadline} | Weight: {package.weight} | Status: Package delivered at: {package.delivery_time}")
+            print(f"Package ID: {package.package_id} | Address: {package.address} | City: {package.city} | Zipcode: {package.zipcode} | Deadline: {package.deadline} | Weight: {package.weight} | Status: Package delivered at: {package.delivery_time} | Truck: {package.assigned_truck}")
         # if package will be delivered after end time, and the truck start time is before the start time, it is at the hub
         elif package.delivery_time >= end_time and package.truck_start_time > end_time:
-            print(f"Package ID: {package.package_id} | Address: {package.address} | City: {package.city} | Zipcode:{package.zipcode} | Deadline: {package.deadline} | Weight: {package.weight} | Status: Package at hub")
+            print(f"Package ID: {package.package_id} | Address: {package.address} | City: {package.city} | Zipcode: {package.zipcode} | Deadline: {package.deadline} | Weight: {package.weight} | Status: Package at hub")
         else:
-            print(f"Package ID: {package.package_id} | Address: {package.address} | City: {package.city} | Zipcode:{package.zipcode} | Deadline: {package.deadline} | Weight: {package.weight} | Status: Package en route on Truck {package.assigned_truck}")
+            if package_id == 9 and end_time < time(10,20,0):
+                print(f"Package ID: {package.package_id} | Address: 300 State St | City: {package.city} | Zipcode: 84103 | Deadline: {package.deadline} | Weight: {package.weight} | Status: Package en route on Truck {package.assigned_truck} | Truck: {package.assigned_truck}")
+            else:
+                print(f"Package ID: {package.package_id} | Address: {package.address} | City: {package.city} | Zipcode: {package.zipcode} | Deadline: {package.deadline} | Weight: {package.weight} | Status: Package en route on Truck {package.assigned_truck} | Truck: {package.assigned_truck}")
